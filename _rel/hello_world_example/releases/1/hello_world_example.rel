@@ -1,0 +1,9 @@
+{release,{"hello_world_example","1"},
+         {erts,"7.3.1"},
+         [{kernel,"4.2"},
+          {stdlib,"2.8"},
+          {crypto,"3.6.3"},
+          {ranch,"1.2.1"},
+          {cowlib,"1.3.0"},
+          {cowboy,"2.0.0-pre.2"},
+          {hello_world,"1"}]}. 

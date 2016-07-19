@@ -1,0 +1,12 @@
+{release,
+	{"hello_release", "1.0"},
+	{erts, "7.3"},
+		[{kernel, "4.2"},
+		{stdlib, "2.8"},
+		{crypto, "3.6.3"},
+		{cowlib, ""},
+		{ranch, ""},
+		{cowboy, ""},
+		{hello_world, "1.0"}
+		]
+}.
