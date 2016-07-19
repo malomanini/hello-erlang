@@ -1,0 +1,10 @@
+*~
+*.beam
+*.app
+
+/*.d
+/deps
+/ebin
+/_rel
+/relx
+/.erlang.mk
