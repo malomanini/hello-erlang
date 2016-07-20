@@ -16,10 +16,19 @@ start(_Type, _Args) ->
 			{"/", toppage_handler, []}
 		]}
 	]),
-	{ok, _} = cowboy:start_clear(http, 100, [{port, 8080}], #{
-		env => #{dispatch => Dispatch}
-	}),
+    NbAcceptors = 100,
+    Port = 8080,
+        init(www, NbAcceptors, Port, Dispatch),
 	hello_world_sup:start_link().
 
 stop(_State) ->
 	ok.
+
+init(PoolName, NbAcceptors, Port, Dispatch) ->
+    [_] = pool:start(PoolName),
+    TransOpts = [{port, Port}],
+    ProtoOpts = #{
+      pool => PoolName,
+      env => #{dispatch => Dispatch }
+     },
+    ranch:start_listener(http, NbAcceptors, ranch_tcp, TransOpts, ranch_dist, ProtoOpts).
