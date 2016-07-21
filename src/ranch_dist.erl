@@ -20,7 +20,7 @@
 
 -spec start_link(ranch:ref(), inet:socket(), module(), cowboy:opts()) -> {ok, pid()}.
 start_link(Ref, Socket, Transport, Opts) ->
-	Res = rpc:call('node2@valeria', erlang, list_to_pid, ["<0.39.0>"]),
+	Res = rpc:call(pool:get_node(), erlang, list_to_pid, ["<0.39.0>"]),
 	Pid = proc_lib:spawn_link(?MODULE, proc_lib_hack, [Res, Ref, Socket, Transport, Opts]),
 	{ok, Pid}.
 
