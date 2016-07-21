@@ -6,7 +6,7 @@
 -export([init/2]).
 
 init(Req, Opts) ->
-	Node = atom_to_list(pool:get_node()),
+	Node = atom_to_list(node()),
 	cowboy_req:reply(200, #{
 		<<"content-type">> => <<"text/plain">>
 	}, Node, Req),
